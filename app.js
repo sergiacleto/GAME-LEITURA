@@ -11,7 +11,6 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         document.getElementById('loginForm').style.display = 'none';
         document.getElementById('loggedInSection').style.display = 'block';
         displayBooks();
-        displayPointsAndRank();
     } else {
         loginResultDiv.innerText = 'Falha no login.';
     }
@@ -33,7 +32,7 @@ function displayBooks() {
     books.forEach(book => {
         const listItem = document.createElement('li');
         listItem.innerText = `${book.title} by ${book.author} - ${book.genre} (Read: ${book.read ? 'Yes' : 'No'})`;
-
+        
         // Adicionar botão de marcar como lido
         const readButton = document.createElement('button');
         readButton.innerText = 'Marcar como Lido';
@@ -41,13 +40,13 @@ function displayBooks() {
             markBookAsRead(book.title);
             displayBooks(); // Atualizar a lista de livros
         };
-
+        
         listItem.appendChild(readButton);
         bookList.appendChild(listItem);
     });
 }
 
-// Função para obter a lista de livros (atualizada)
+// Função para obter a lista de livros (simulação)
 function getBooks() {
     return [
         { title: 'O Senhor dos Anéis', author: 'J.R.R. Tolkien', genre: 'Fantasia', read: false },
@@ -83,4 +82,72 @@ function getBooks() {
         { title: 'The Lord of the Flies', author: 'William Golding', genre: 'Ficção', read: false },
         { title: 'Wuthering Heights', author: 'Emily Brontë', genre: 'Romance', read: true }
     ];
+}
+
+// Função para marcar livro como lido
+function markBookAsRead(title) {
+    const books = getBooks();
+    books.forEach(book => {
+        if (book.title === title && !book.read) {
+            book.read = true;
+            alert('Você ganhou 1 estrela!');
+            updatePoints();
+        }
+    });
+}
+
+// Função para atualizar os pontos e estrelas do usuário
+let points = 0;
+let stars = 0;
+
+function updatePoints() {
+    stars += 1;
+    if (stars % 10 === 0) {
+        points += 1;
+        alert('Você ganhou 1 troféu!');
+    }
+    displayPointsAndRank();
+}
+
+// Função para exibir os pontos e o ranking
+function displayPointsAndRank() {
+    const pointsDiv = document.getElementById('points');
+    pointsDiv.innerText = `Estrelas: ${stars} | Troféus: ${points}`;
+
+    const ranking = getRanking();
+    const rankingList = document.getElementById('ranking');
+    rankingList.innerHTML = '';
+    ranking.forEach((user, index) => {
+        const listItem = document.createElement('li');
+        listItem.innerText = `${index + 1}. ${user.name} - Troféus: ${user.trophies}`;
+        rankingList.appendChild(listItem);
+    });
+}
+
+// Função para obter ranking fictício
+function getRanking() {
+    return [
+        { name: 'Alice', trophies: 3 },
+        { name: 'Bob', trophies: 5 },
+        { name: 'Carlos', trophies: 2 },
+        { name: 'Diana', trophies: 4 },
+        { name: 'Eva', trophies: 1 }
+    ];
+}
+
+// Manipulador para adicionar livro
+document.getElementById('addBookForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const genre = document.getElementById('genre').value;
+
+    // Adicionar o livro à lista (simulação)
+    addBook(title, author, genre);
+    displayBooks();
+});
+
+function addBook(title, author, genre) {
+    // Esta função deve realmente adicionar o livro ao backend ou ao armazenamento
+    console.log(`Adicionar livro: ${title} by ${author} - ${genre}`);
 }
