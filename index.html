@@ -19,7 +19,26 @@
         <button type="submit">Login</button>
     </form>
     <div id="loginResult"></div>
+
+    <!-- Adicionar nova seção para funcionalidades após login -->
+    <div id="loggedInSection" style="display: none;">
+        <h2>Bem-vindo!</h2>
+        <h3>Lista de Livros</h3>
+        <ul id="bookList"></ul>
+
+        <h3>Adicionar Livro</h3>
+        <form id="addBookForm">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title">
+            <br>
+            <label for="author">Autor:</label>
+            <input type="text" id="author" name="author">
+            <br>
+            <label for="genre">Gênero:</label>
+            <input type="text" id="genre" name="genre">
+            <br>
+            <button type="submit">Adicionar Livro</button>
+        </form>
+    </div>
 </body>
 </html>
-
-     
