@@ -9,64 +9,47 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Esse Eu Já Li</h1>
-        </header>
-        <main>
-            <section id="loginSection">
-                <h2>Login</h2>
-                <form id="loginForm">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username">
-                    <br>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password">
-                    <br>
-                    <button type="submit">Login</button>
-                </form>
-                <div id="loginResult"></div>
-            </section>
+        <h1>Esse Eu Já Li</h1>
+        <div id="loginSection">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <button type="submit">Login</button>
+            </form>
+            <div id="loginResult"></div>
+        </div>
 
-            <section id="loggedInSection" style="display: none;">
-                <h2>Bem-vindo!</h2>
+        <div id="loggedInSection" style="display: none;">
+            <h2>Bem-vindo!</h2>
 
-                <div class="books-section">
-                    <h3>Lista de Livros</h3>
-                    <ul id="bookList"></ul>
-                </div>
+            <h3>Pontos e Troféus</h3>
+            <div id="points"></div>
 
-                <div class="add-book-section">
-                    <h3>Adicionar Livro</h3>
-                    <form id="addBookForm">
-                        <label for="title">Título:</label>
-                        <input type="text" id="title" name="title">
-                        <br>
-                        <label for="author">Autor:</label>
-                        <input type="text" id="author" name="author">
-                        <br>
-                        <label for="genre">Gênero:</label>
-                        <input type="text" id="genre" name="genre">
-                        <br>
-                        <button type="submit">Adicionar Livro</button>
-                    </form>
-                </div>
+            <h3>Lista de Livros</h3>
+            <ul id="bookList"></ul>
 
-                <div class="points-section">
-                    <h3>Seus Pontos e Troféus</h3>
-                    <div id="points">Estrelas: 0 | Troféus: 0</div>
-                </div>
+            <h3>Adicionar Livro</h3>
+            <form id="addBookForm">
+                <label for="title">Título:</label>
+                <input type="text" id="title" name="title" required>
+                <br>
+                <label for="author">Autor:</label>
+                <input type="text" id="author" name="author" required>
+                <br>
+                <label for="genre">Gênero:</label>
+                <input type="text" id="genre" name="genre" required>
+                <br>
+                <button type="submit">Adicionar Livro</button>
+            </form>
 
-                <div class="ranking-section">
-                    <h3>Ranking de Usuários</h3>
-                    <ul id="ranking"></ul>
-                </div>
-            </section>
-        </main>
-
-        <aside>
-            <img src="images/books.jpg" alt="Books" class="image">
-            <img src="images/reading.jpg" alt="Reading" class="image">
-        </aside>
+            <h3>Ranking de Usuários</h3>
+            <ul id="ranking"></ul>
+        </div>
     </div>
 </body>
 </html>
