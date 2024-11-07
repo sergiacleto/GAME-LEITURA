@@ -31,7 +31,7 @@ function displayBooks() {
     bookList.innerHTML = '';
     books.forEach(book => {
         const listItem = document.createElement('li');
-        listItem.innerText = `${book.title} by ${book.author} - ${book.genre} (Read: ${book.read})`;
+        listItem.innerText = `${book.title} by ${book.author} - ${book.genre} (Read: ${book.read ? 'Yes' : 'No'})`;
         bookList.appendChild(listItem);
     });
 }
