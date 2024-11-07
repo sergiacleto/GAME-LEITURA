@@ -11,6 +11,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         document.getElementById('loginForm').style.display = 'none';
         document.getElementById('loggedInSection').style.display = 'block';
         displayBooks();
+        displayPointsAndRank();
     } else {
         loginResultDiv.innerText = 'Falha no login.';
     }
@@ -32,6 +33,16 @@ function displayBooks() {
     books.forEach(book => {
         const listItem = document.createElement('li');
         listItem.innerText = `${book.title} by ${book.author} - ${book.genre} (Read: ${book.read ? 'Yes' : 'No'})`;
+
+        // Adicionar botão de marcar como lido
+        const readButton = document.createElement('button');
+        readButton.innerText = 'Marcar como Lido';
+        readButton.onclick = function() {
+            markBookAsRead(book.title);
+            displayBooks(); // Atualizar a lista de livros
+        };
+
+        listItem.appendChild(readButton);
         bookList.appendChild(listItem);
     });
 }
@@ -72,22 +83,4 @@ function getBooks() {
         { title: 'The Lord of the Flies', author: 'William Golding', genre: 'Ficção', read: false },
         { title: 'Wuthering Heights', author: 'Emily Brontë', genre: 'Romance', read: true }
     ];
-}
-
-
-// Manipulador para adicionar livro
-document.getElementById('addBookForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
-    const genre = document.getElementById('genre').value;
-
-    // Adicionar o livro à lista (simulação)
-    addBook(title, author, genre);
-    displayBooks();
-});
-
-function addBook(title, author, genre) {
-    // Esta função deve realmente adicionar o livro ao backend ou ao armazenamento
-    console.log(`Adicionar livro: ${title} by ${author} - ${genre}`);
 }
